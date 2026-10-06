@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAMURAI SYNDICATE // Официальный Discord Семьи • Majestic RP</title>
+  <meta name="description" content="Официальный портал и Discord сервер семьи Samurai на Majestic RP. Николай Самурай, Гена Самурай, Йокай, Пандора, Дима. Семья. Честь. Дисциплина.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=Orbitron:wght@600;800;900&family=Teko:wght@500;600;700&family=Yuji+Boku&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="samurai-crimson-theme">
+
+  <!-- Фоновое видео, частицы сакуры и оверлей -->
+  <div class="bg-layer">
+    <video id="bg-video" autoplay muted loop playsinline poster="assets/images/samurai_squad.jpg">
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-night-skyline-and-city-traffic-timelapse-4279-large.mp4" type="video/mp4">
+    </video>
+    <div class="bg-vignette"></div>
+    <div class="bg-crimson-overlay"></div>
+    <div class="scanlines" id="scanlines"></div>
+    <canvas id="sakura-canvas"></canvas>
+  </div>
+
+  <!-- Верхняя панель: Majestic RP & Discord Server HUD -->
+  <header class="portal-header">
+    <div class="header-left">
+      <div class="majestic-tag">
+        <span class="m-crown">👑</span>
+        <div class="m-text">
+          <span class="m-title">MAJESTIC<strong>RP</strong></span>
+          <span class="m-sub">LOS SANTOS • SAN ANDREAS</span>
+        </div>
+      </div>
+
+      <div class="discord-live-pill" id="discord-live-pill" title="Нажмите, чтобы настроить реальный Discord">
+        <span class="discord-pulse"></span>
+        <div class="pill-info">
+          <div class="pill-top-row">
+            <span class="pill-name" id="discord-guild-name">SAMURAI DISCORD</span>
+          </div>
+          <span class="pill-members">
+            🟢 В СЕТИ: <strong id="discord-online-count">482</strong> • 
+            ⚪ ОФФЛАЙН: <strong id="discord-offline-count">858</strong> • 
+            👥 ВСЕГО: <strong id="discord-total-count">1,340</strong>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div class="kanji-crest">侍</div>
+      <div class="motto-badge">
+        <span class="jp-motto">家族は終わりまで一緒</span>
+        <span class="ru-motto">СЕМЬЯ • ЧЕСТЬ • ДИСЦИПЛИНА</span>
+      </div>
+      <div class="kanji-crest">侍</div>
+    </div>
+
+    <div class="header-right">
+      <button class="btn-join-discord" id="btn-join-discord" title="Вступить в официальный Discord семьи">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+        </svg>
+        <span>ВОЙТИ В DISCORD</span>
+      </button>
+
+      <button class="btn-recruitment-top" id="btn-open-recruit">
+        <span>⚡ ПОДАТЬ ЗАЯВКУ</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Основной контент портала -->
+  <main class="portal-main">
+
+    <!-- СЕКЦИЯ 1: ЦЕНТРАЛЬНЫЙ АРТ СЕМЬИ И 5 ЛИДЕРОВ -->
+    <section class="poster-hero-section">
+      <div class="poster-glow-backdrop"></div>
+      
+      <div class="squad-poster-card" id="squad-poster-card">
+        <div class="poster-inner-frame">
+          <img id="poster-img" src="assets/images/samurai_squad.jpg" alt="Samurai Family Syndicate Majestic RP">
+          <div class="poster-overlay-gradient"></div>
+
+          <!-- Верхний ярлык синдиката -->
+          <div class="poster-top-bar">
+            <span class="syndicate-badge">⛩️ SAMURAI SYNDICATE // MAJESTIC RP</span>
+            <span class="bloodline-badge">СЕМЬЯ — ДО КОНЦА</span>
+          </div>
+
+          <!-- Нижний статус-бар -->
+          <div class="poster-bottom-bar">
+            <div class="leader-chip">
+              <span class="chip-crown">👑</span>
+              <span>ГЛАВА: <strong>NIKOLAI SAMURAI</strong></span>
+            </div>
+            <div class="leader-chip">
+              <span class="chip-blade">⚔️</span>
+              <span>СВОЯК: <strong>GENA SAMURAI</strong></span>
+            </div>
+            <div class="leader-chip">
+              <span class="chip-spirit">妖</span>
+              <span>КЛИНОК: <strong>YOKAI SAMURAI</strong></span>
+            </div>
+            <div class="leader-chip">
+              <span class="chip-queen">👑</span>
+              <span>СЕМЬЯ: <strong>PANDORA SAMURAI</strong></span>
+            </div>
+            <div class="leader-chip">
+              <span class="chip-shadow">侍</span>
+              <span>БОЕЦ: <strong>DIMA SAMURAI</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 2: ИНТЕРАКТИВНЫЕ ДОСЬЕ 5 САМУРАЕВ -->
+    <section class="family-members-section">
+      <div class="section-title-box">
+        <span class="sub-kanji">指導者たち</span>
+        <h2>СТАРШИЙ СОСТАВ СЕМЬИ SAMURAI</h2>
+        <p>Кликните по карточке, чтобы скопировать Discord или изучить досье лидера</p>
+      </div>
+
+      <div class="members-grid">
+        <!-- 1. Nikolai Samurai -->
+        <div class="member-card boss-card" data-member="nikolai">
+          <div class="member-header">
+            <span class="member-kanji">王</span>
+            <span class="role-badge boss">👑 ГЛАВА СЕМЬИ</span>
+          </div>
+          <h3 class="member-name">Nikolai Samurai</h3>
+          <p class="member-creed">«Семья — не просто слово. Это ответственность, которую я несу до конца.»</p>
+          <div class="member-specs">
+            <div class="spec-item"><span>Статус:</span> <strong>Основатель</strong></div>
+            <div class="spec-item"><span>Оружие:</span> <strong>Heavy Sniper MK II</strong></div>
+            <div class="spec-item"><span>Ранг в ДС:</span> <strong>6 | Свояк / Leader</strong></div>
+          </div>
+          <button class="btn-member-action" data-copy="nikolai_samurai">
+            <span>DISCORD: nikolai_samurai</span>
+          </button>
+        </div>
+
+        <!-- 2. Gena Samurai -->
+        <div class="member-card gena-card" data-member="gena">
+          <div class="member-header">
+            <span class="member-kanji">侍</span>
+            <span class="role-badge co-boss">⚔️ СВОЯК / ЛИДЕР</span>
+          </div>
+          <h3 class="member-name">Gena Samurai</h3>
+          <p class="member-creed">«Дисциплина. Уважение. Свобода. В этом городе нужно быть не просто сильным, а умным.»</p>
+          <div class="member-specs">
+            <div class="spec-item"><span>Статус:</span> <strong>Глава боевого крыла</strong></div>
+            <div class="spec-item"><span>Авто:</span> <strong>G63 AMG "Samurai"</strong></div>
+            <div class="spec-item"><span>Ранг в ДС:</span> <strong>6 | Свояк</strong></div>
+          </div>
+          <button class="btn-member-action" data-copy="ktoto342245">
+            <span>DISCORD: ktoto342245</span>
+          </button>
+        </div>
+
+        <!-- 3. Yokai Samurai -->
+        <div class="member-card yokai-card" data-member="yokai">
+          <div class="member-header">
+            <span class="member-kanji red-kanji">妖</span>
+            <span class="role-badge spec-ops">🗡️ ТЕНЬ И КЛИНОК</span>
+          </div>
+          <h3 class="member-name">Yokai Samurai</h3>
+          <p class="member-creed">«Тень. Клинок. Свобода. То, что скрыто во мраке, решает исход битвы.»</p>
+          <div class="member-specs">
+            <div class="spec-item"><span>Статус:</span> <strong>Мастер разведки</strong></div>
+            <div class="spec-item"><span>Стиль:</span> <strong>Маска Ханья • Катана</strong></div>
+            <div class="spec-item"><span>Ранг в ДС:</span> <strong>5 | Закаленный</strong></div>
+          </div>
+          <button class="btn-member-action" data-copy="darkkiller1811">
+            <span>DISCORD: darkkiller1811</span>
+          </button>
+        </div>
+
+        <!-- 4. Pandora Samurai -->
+        <div class="member-card pandora-card" data-member="pandora">
+          <div class="member-header">
+            <span class="member-kanji red-kanji">👑</span>
+            <span class="role-badge queen">🌹 ЭЛИТА СЕМЬИ</span>
+          </div>
+          <h3 class="member-name">Pandora Samurai</h3>
+          <p class="member-creed">«Мир — это иллюзия. Я выбираю, во что верить и за кем идти.»</p>
+          <div class="member-specs">
+            <div class="spec-item"><span>Статус:</span> <strong>Стратег & Казначей</strong></div>
+            <div class="spec-item"><span>Оружие:</span> <strong>Combat PDW • Снайпинг</strong></div>
+            <div class="spec-item"><span>Ранг в ДС:</span> <strong>5 | Закаленный</strong></div>
+          </div>
+          <button class="btn-member-action" data-copy="ponyasha5704">
+            <span>DISCORD: ponyasha5704</span>
+          </button>
+        </div>
+
+        <!-- 5. Dima Samurai -->
+        <div class="member-card dima-card" data-member="dima">
+          <div class="member-header">
+            <span class="member-kanji">侍</span>
+            <span class="role-badge fighter">🎯 СТАРШИЙ СТРЕЛОК</span>
+          </div>
+          <h3 class="member-name">Dima Samurai</h3>
+          <p class="member-creed">«Лучше быть одним, чем с теми, кто тянет вниз. В семье — только преданные.»</p>
+          <div class="member-specs">
+            <div class="spec-item"><span>Статус:</span> <strong>Командир штурмовиков</strong></div>
+            <div class="spec-item"><span>Оружие:</span> <strong>Special Carbine Drum</strong></div>
+            <div class="spec-item"><span>Ранг в ДС:</span> <strong>4 | Проверенный</strong></div>
+          </div>
+          <button class="btn-member-action" data-copy="dima2312371">
+            <span>DISCORD: dima2312371</span>
+          </button>
+        </div>
+      </div>
+    </section>
+   
+
+    <!-- СЕКЦИЯ 4: ФОРМА ПОДАЧИ ЗАЯВКИ В DISCORD -->
+    <section class="recruitment-section" id="recruitment-anchor">
+      <div class="recruit-wrapper">
+        <div class="recruit-info-col">
+          <span class="kanji-watermark">門</span>
+          <span class="section-badge">НАБОР В СЕМЬЮ</span>
+          <h2>ВСТУПИТЬ В СЕМЬЮ SAMURAI</h2>
+          <p>
+            Мы принимаем только дисциплинированных и стрессоустойчивых игроков Majestic RP, готовых стоять за каждого брата до конца.
+          </p>
+
+          <div class="req-list">
+            <div class="req-item">
+              <span class="req-check">✓</span>
+              <span>Возраст 12+ (исключения по собеседованию)</span>
+            </div>
+            <div class="req-item">
+              <span class="req-check">✓</span>
+              <span>Статический ID на Majestic RP Dallas</span>
+            </div>
+            <div class="req-item">
+              <span class="req-check">✓</span>
+              <span>Наличие микрофона и Discord аккаунта</span>
+            </div>
+            <div class="req-item">
+              <span class="req-check">✓</span>
+              <span>Умение стрелять и слушать старших на операциях</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recruit-form-col">
+          <form class="discord-app-form" id="discord-app-form">
+            <h3>ЗАЯВКА НА ВСТУПЛЕНИЕ</h3>
+            
+            <div class="form-row">
+              <div class="input-block">
+                <label for="app-name">Ваше игровое Имя_Фамилия:</label>
+                <input type="text" id="app-name" placeholder="Например: Kenji_Samurai" required>
+              </div>
+              <div class="input-block">
+                <label for="app-static">Static ID на Majestic RP:</label>
+                <input type="text" id="app-static" placeholder="#184920" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="input-block">
+                <label for="app-age">Реальный возраст / Часовой пояс:</label>
+                <input type="text" id="app-age" placeholder="18 лет / МСК" required>
+              </div>
+              <div class="input-block">
+                <label for="app-discord">Ваш Discord тег:</label>
+                <input type="text" id="app-discord" placeholder="username#0000" required>
+              </div>
+            </div>
+
+            <div class="input-block full-width">
+              <label for="app-skill">Опыт в стрельбе и прошлые семьи/фракции:</label>
+              <textarea id="app-skill" rows="3" placeholder="Расскажите о вашем опыте на аирдропах, каптах и почему выбрали Samurai..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-recruit">
+              <span>ОТПРАВИТЬ ЗАЯВКУ РУКОВОДСТВУ</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал сайта -->
+  <footer class="portal-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="f-kanji">侍</span>
+        <div>
+          <h4>SAMURAI SYNDICATE</h4>
+          <p>Majestic Roleplay • Detroit Server • 家族は終わりまで一緒</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#recruitment-anchor">Подать заявку</a>
+        <a href="https://discord.gg/qsJJcrz3vP" target="_blank" rel="noopener">Discord</a>
+      </div>
+
+      <div class="footer-copyright">
+        © 2026 SAMURAI FAMILY. All Rights Reserved.
+      </div>
+    </div>
+  </div>
+
+  <!-- Плавающий динамик в правом нижнем углу (Вкл/Выкл музыку) -->
+  <div class="floating-speaker-widget" id="floating-speaker-widget" title="Выключить / Включить музыку">
+    <div class="speaker-wave-pulse" id="speaker-wave-pulse"></div>
+    <button class="speaker-circle-btn" id="speaker-toggle-btn" aria-label="Управление звуком">
+      <span class="speaker-icon" id="speaker-icon">🔊</span>
+    </button>
+    <span class="speaker-badge" id="speaker-badge">МУЗЫКА ВКЛ</span>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast-notify">
+    <div class="toast-icon">✓</div>
+    <div class="toast-message" id="toast-msg">Успешно!</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
