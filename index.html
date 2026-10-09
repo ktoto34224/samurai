@@ -8,14 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=Orbitron:wght@600;800;900&family=Teko:wght@500;600;700&family=Yuji+Boku&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
   <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
 </head>
 <body class="samurai-crimson-theme">
 
   <!-- Фоновое видео, частицы сакуры и оверлей -->
   <div class="bg-layer">
-    <video id="bg-video" autoplay muted loop playsinline poster="assets/images/samurai_squad.jpg">
+    <video id="bg-video" autoplay muted loop playsinline poster="samurai_squad.jpg">
       <source src="https://assets.mixkit.co/videos/preview/mixkit-night-skyline-and-city-traffic-timelapse-4279-large.mp4" type="video/mp4">
     </video>
     <div class="bg-vignette"></div>
@@ -57,13 +57,13 @@
   <!-- Основной контент портала -->
   <main class="portal-main">
 
-    <!-- СЕКЦИЯ 1: ЦЕНТРАЛЬНЫЙ АРТ СЕМЬИ И 5 ЛИДЕРОВ -->
+    <!-- СЕКЦИЯ 1: ЦЕНТРАЛЬНЫЙ АРТ СЕМЬИ И 12 ЛИДЕРОВ -->
     <section class="poster-hero-section">
       <div class="poster-glow-backdrop"></div>
       
       <div class="squad-poster-card" id="squad-poster-card">
         <div class="poster-inner-frame">
-          <img id="poster-img" src="assets/images/samurai_squad.jpg" alt="Samurai Family Syndicate Majestic RP">
+          <img id="poster-img" src="samurai_squad.jpg" alt="Samurai Family Syndicate Majestic RP">
           <div class="poster-overlay-gradient"></div>
 
           <!-- Верхний ярлык синдиката -->
@@ -72,7 +72,7 @@
             <span class="bloodline-badge">СЕМЬЯ — ДО КОНЦА</span>
           </div>
 
-          <!-- Нижний статус-бар (Все 12 Самураев) -->
+          <!-- Нижний статус-бар -->
           <div class="poster-bottom-bar">
             <div class="leader-chip" data-goto="nikolai">
               <span class="chip-crown">👑</span>
@@ -122,10 +122,6 @@
               <span class="chip-shadow">🗡️</span>
               <span>ЗАМЕСТИТЕЛЬ ГЛАВЫ: <strong>NOAH</strong></span>
             </div>
-            <div class="leader-chip" data-goto="noah">
-              <span class="chip-shadow">🗡️</span>
-              <span>ЗАМЕСТИТЕЛЬ ГЛАВЫ: <strong>VLADOS</strong></span>
-            </div>
           </div>
         </div>
       </div>
@@ -156,7 +152,7 @@
           </button>
         </div>
 
-        <div class="member-card noah-card" data-member="noah" data-category="tactics">
+        <div class="member-card noah-card" data-member="vlados" data-category="tactics">
           <div class="member-header">
             <span class="member-kanji">侍</span>
             <span class="role-badge shadow">🗡️ ЗАМЕСТИТЕЛЬ</span>
@@ -170,7 +166,6 @@
             <span>DISCORD: fixgor.</span>
           </button>
         </div>
-        
         
         <div class="member-card noah-card" data-member="noah" data-category="tactics">
           <div class="member-header">
@@ -186,7 +181,6 @@
             <span>DISCORD: fantikus_</span>
           </button>
         </div>
-
 
         <div class="member-card pandora-card" data-member="pandora" data-category="lead">
           <div class="member-header">
@@ -263,7 +257,6 @@
           </button>
         </div>
 
-        <!-- 2. Gena Samurai -->
         <div class="member-card gena-card" data-member="gena" data-category="lead">
           <div class="member-header">
             <span class="member-kanji">侍</span>
@@ -279,16 +272,6 @@
           </button>
         </div>
 
-        <!-- 3. Yokai Samurai -->
-        
-
-        <!-- 4. Pandora Samurai -->
-        
-
-        <!-- 5. Dima Samurai -->
-        
-
-        <!-- 6. Timur Samurai -->
         <div class="member-card timur-card" data-member="timur" data-category="assault">
           <div class="member-header">
             <span class="member-kanji">侍</span>
@@ -304,10 +287,6 @@
           </button>
         </div>
 
-        <!-- 7. Takemura Samurai -->
-        
-
-        <!-- 8. Lezgin Samurai -->
         <div class="member-card lezgin-card" data-member="lezgin" data-category="assault">
           <div class="member-header">
             <span class="member-kanji">侍</span>
@@ -323,10 +302,6 @@
           </button>
         </div>
 
-        <!-- 9. Nastya Samurai -->
-        
-
-        <!-- 10. Misha Samurai -->
         <div class="member-card misha-card" data-member="misha" data-category="tactics">
           <div class="member-header">
             <span class="member-kanji">侍</span>
@@ -342,7 +317,6 @@
           </button>
         </div>
 
-        <!-- 11. Pavel Samurai -->
         <div class="member-card pavel-card" data-member="pavel" data-category="assault">
           <div class="member-header">
             <span class="member-kanji">侍</span>
@@ -357,12 +331,9 @@
             <span>DISCORD: lightman5570</span>
           </button>
         </div>
-
-        <!-- 12. Noah Samurai -->
-        
       </div>
     </section>
-   
+  </main>
 
   <!-- Подвал сайта -->
   <footer class="portal-footer">
@@ -384,26 +355,22 @@
         © 2026 SAMURAI FAMILY. All Rights Reserved.
       </div>
     </div>
-  </div>
+  </footer>
 
   <!-- Плавающий динамик в правом нижнем углу (Вкл/Выкл музыку) -->
   <div class="floating-speaker-widget" id="floating-speaker-widget" title="Выключить / Включить музыку">
     <div class="speaker-wave-pulse" id="speaker-wave-pulse"></div>
     <button class="speaker-circle-btn" id="speaker-toggle-btn" aria-label="Управление звуком">
       <span class="speaker-icon" id="speaker-icon">
-        <!-- Иконка включенного звука (ваша Lucide Volume-2) -->
         <svg class="icon-sound-on" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path
-            d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
+          <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
           <path d="M16 9a5 5 0 0 1 0 6" />
           <path d="M19.364 18.364a9 9 0 0 0 0-12.728" />
         </svg>
-        <!-- Иконка выключенного звука (Volume-X) -->
         <svg class="icon-sound-off" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path
-            d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
+          <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
           <line x1="22" y1="9" x2="16" y2="15" />
           <line x1="16" y1="9" x2="22" y2="15" />
         </svg>
@@ -412,7 +379,6 @@
     <span class="speaker-badge" id="speaker-badge">МУЗЫКА ВКЛ</span>
   </div>
 
-  <!-- Toast Notification -->
   <div class="toast-notification" id="toast-notify">
     <div class="toast-icon">✓</div>
     <div class="toast-message" id="toast-msg">Успешно!</div>
